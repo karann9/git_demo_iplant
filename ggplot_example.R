@@ -51,3 +51,38 @@ birthwt_plot <- ggplot(birthwt, aes(factor(race), bwt)) + geom_boxplot()
 summary(birthwt_plot)
 
 #Section 6 - facets
+ggplot(data=iris, aes(x= Sepal.Length, y = Sepal.Width, color=Species)) + 
+  geom_point(size = 4) +
+  facet_grid(Species ~ .) #this is horizontally
+
+ggplot(data=iris, aes(x= Sepal.Length, y = Sepal.Width, color=Species)) + 
+  geom_point(size = 4) +
+  facet_grid(. ~ Species) #this is vertically
+
+ggplot(data=iris, aes(x= Sepal.Length, y = Sepal.Width, color=Species)) + 
+  geom_point(size = 4) +
+  facet_grid( ~ Species) #notice the lack of .
+
+#section 7 - scales
+
+aes (color=variable)
+
+library(RColorBrewer)
+display.brewer.all()
+
+library("reshape2")
+df <-melt(iris, id.vars = "Species")
+ggplot (df, aes(Species, value, fill=variable)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_brewer(palette="Set1")
+
+#medialab iwanthue google it
+
+#adding cont scale to an axis
+ggplot(birthwt, aes(factor(race), bwt)) + geom_boxplot() #explore this from slides
+
+#section 9 - coordinates
+#eg. polar coordinates
+#no piechart oob, can hack using polar
+
+
