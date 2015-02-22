@@ -38,5 +38,16 @@ d2 <- diamonds[sample(1:dim(diamonds)[1],1000),]
 #create a plot from that subset
 ggplot(data=d2, aes(x=carat, y=price, color=color, shape = cut)) + geom_point()
 
-#talking about stats
+#Section 5 - talking about stats
 #eg. binning for a histogram or fitting a linear model
+
+#loading the default MASS lib
+library(MASS)
+
+#plot from birthwt, aes-factor forces race to act as a categorical var and not cont
+ggplot(birthwt, aes(factor(race), bwt)) + geom_boxplot()
+
+birthwt_plot <- ggplot(birthwt, aes(factor(race), bwt)) + geom_boxplot()
+summary(birthwt_plot)
+
+#Section 6 - facets
